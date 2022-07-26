@@ -310,14 +310,14 @@
                         <av:PointCollection x:Key="ConnectorLocation">410,530 590,530</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Add Client" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Add Client" sap:VirtualizedContainerService.HintSize="476,1025" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="3035,7085" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,933" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                         <TryCatch.Variables>
                           <Variable x:TypeArguments="x:Boolean" Name="PRMS_Dashboard" />
                         </TryCatch.Variables>
@@ -2419,10 +2419,10 @@
                           </Sequence>
                         </TryCatch.Try>
                         <TryCatch.Catches>
-                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="3001,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,771" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -2451,7 +2451,7 @@
                                     </ui:Target>
                                   </ui:TakeScreenshot.Target>
                                 </ui:TakeScreenshot>
-                                <ui:SaveImage DisplayName="Save Image" FileName="[&quot;C:\Users\sushmithas\Documents\UiPath\PRMS\Error Screen Shot\&quot;+Now.ToString(&quot;mm-dd-yyyy-HH-MM-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="SaveImage_5" Image="[Scrn_shot]" />
+                                <ui:SaveImage DisplayName="Save Image" FileName="[&quot;C:\Users\admin\Documents\PRMS_Error_Screenshots\&quot;+Now.ToString(&quot;mm-dd-yyyy-HH-MM-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="SaveImage_5" Image="[Scrn_shot]" />
                                 <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_193">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Object">[ClTrans.Rows(CurrRow).Item("Status")]</OutArgument>
@@ -2465,7 +2465,7 @@
                                     <OutArgument x:TypeArguments="x:Object">[ClTrans.Rows(CurrRow).Item("Errors")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Object">["C:\Users\sushmithas\Documents\UiPath\PRMS\Error Screen Shot\"+Now.ToString("mm-dd-yyyy-HH-MM-ss")+".png"]</InArgument>
+                                    <InArgument x:TypeArguments="x:Object">["C:\Users\admin\Documents\PRMS_Error_Screenshots\"+Now.ToString("mm-dd-yyyy-HH-MM-ss")+".png"]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Jira_Demo.xaml">
@@ -2558,7 +2558,7 @@
                         <av:PointCollection x:Key="ConnectorLocation">410,620 440,620 440,530 590,530</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Update Client" sap:VirtualizedContainerService.HintSize="480,385" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence DisplayName="Update Client" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
