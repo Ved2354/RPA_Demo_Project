@@ -78,8 +78,20 @@ pipeline {
 	         // Deploy to Production Step
 	        stage('Deploy to Production') {
 	            steps {
-	                echo 'Deploy to Production'
-	                }
+	               echo 'Testing the workflow...'
+					UiPathTest (
+					  testTarget: [$class: 'TestSetEntry', testSet: "PRMS_Sprint_One"],
+					  orchestratorAddress: "${UIPATH_ORCH_URL}",
+					  orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+					  folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+					  timeout: 1000000,
+					  traceLevel: 'None',
+					  testResultsOutputPath: "result.xml",
+					  //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: "credentialsId"]
+					  credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+					  parametersFilePath: ''
+					           )
+	                 }
 	            }
 	    }
 	
