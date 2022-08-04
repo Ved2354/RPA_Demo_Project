@@ -75,6 +75,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.JiraGet</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Jira_Demo" sap:VirtualizedContainerService.HintSize="494,1302" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -92,7 +93,7 @@
         <OutArgument x:TypeArguments="ss:SecureString">[Jira_API_Token]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"UKuheFI5lNWKBnMkh2D9AA33").SecurePassword]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"eczCDJKsuvh6pxUJ2pc98822").SecurePassword]</InArgument>
       </Assign.Value>
     </Assign>
     <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[Jira_API_Token]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="452,1110" sap2010:WorkflowViewState.IdRef="JiraScope_1" ServerURL="https://vedantk.atlassian.net/" UserName="vedantkumar05@gmail.com">
