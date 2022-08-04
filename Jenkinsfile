@@ -94,6 +94,9 @@ pipeline {
 	                 }
 			post { 
         			always { 
+					def xml_file_contents = new XmlParser().parseText("result.xml")
+					def resultStatus=println xml_file_contents.scm.status[0].remote.text()
+					echo "Status is ${resultStatus} UAT "
             				junit allowEmptyResults:true, testResults: 'result.xml', skipPublishingChecks: true
         				}
     				}
