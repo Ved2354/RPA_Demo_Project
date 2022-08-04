@@ -92,6 +92,11 @@ pipeline {
 					  parametersFilePath: ''
 					           )
 	                 }
+			post { 
+        			always { 
+            				junit allowEmptyResults:true, testResults: 'result.xml'
+        				}
+    				}
 	            }
 	    }
 	
