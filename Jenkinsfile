@@ -94,7 +94,7 @@ pipeline {
 	                 }
 			post { 
         			always { 
-            				junit allowEmptyResults:true, testResults: 'result.xml'
+            				junit allowEmptyResults:true, testResults: 'result.xml', skipPublishingChecks: true
         				}
     				}
 	            }
