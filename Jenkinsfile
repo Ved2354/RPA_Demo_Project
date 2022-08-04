@@ -92,12 +92,14 @@ pipeline {
 					  parametersFilePath: ''
 					           )
 	                 }
-			post { 
-        			always { 
-					
-            				junit allowEmptyResults:true, testResults: "result.xml", skipPublishingChecks: true
-        				}
-    				}
+			post {
+    				always {
+      					junit(
+        					allowEmptyResults: true,
+        					testResults: '**/test-reports/*.xml'
+      						)
+    					}
+
 	            }
 	    }
 	
