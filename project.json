@@ -9,13 +9,16 @@
     "UiPath.Jira.Activities": "[2.3.1-preview]",
     "UiPath.Mail.Activities": "[1.15.2]",
     "UiPath.System.Activities": "[22.4.1]",
-    "UiPath.UIAutomation.Activities": "[22.4.5]"
+    "UiPath.UIAutomation.Activities": "[22.4.5]",
+    "UiPathTeam.Confluence.Activities": "[1.0.0.72]",
+    "UiPathTeam.File.Activities": "[1.0.4]",
+    "UiPathTeam.JiraGet.Activities": "[1.0.0.116]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "22.4.3.0",
-  "projectVersion": "5.0.113158303",
+  "projectVersion": "5.0.113215214",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
