@@ -86,7 +86,7 @@ pipeline {
 					  folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 					  timeout: 1000000,
 					  traceLevel: 'None',
-					  testResultsOutputPath: "result.html",
+					  testResultsOutputPath: "result.xml",
 					  //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: "credentialsId"]
 					  credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
 					  parametersFilePath: ''
