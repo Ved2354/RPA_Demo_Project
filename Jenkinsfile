@@ -95,7 +95,7 @@ pipeline {
 			post { 
         			always { 
 					
-            				junit allowEmptyResults:true, testResults: 'result.xml', skipPublishingChecks: true
+            				junit allowEmptyResults:true, testResults: "C:\\JenkinsRoot\\Jenkins_PRMS_CICD\\main\\workspace\\result.xml", skipPublishingChecks: true
         				}
     				}
 	            }
