@@ -95,7 +95,7 @@ pipeline {
 			post {
     				always {
       					junit(
-        					allowEmptyResults: true,
+        					allowEmptyResults: true,skipPublishingChecks: true
         					testResults: 'result.xml'
       						)
     					}
