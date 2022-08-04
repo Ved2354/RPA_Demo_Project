@@ -94,8 +94,9 @@ pipeline {
 	                 }
 			post { 
         			always { 
-					def xml_file_contents = new XmlParser().parseText("result.xml")
-					def resultStatus=println xml_file_contents.scm.status[0].remote.text()
+					def parser = new XmlParser()
+      					def doc = parser.parse("C:\\JenkinsRoot\\Jenkins_PRMS_CICD\\main\\workspace\\result.xml");
+					def resultStatus=doc.status[0].remote.text()
 					echo "Status is ${resultStatus} UAT "
             				junit allowEmptyResults:true, testResults: 'result.xml', skipPublishingChecks: true
         				}
