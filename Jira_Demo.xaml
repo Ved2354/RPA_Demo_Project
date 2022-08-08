@@ -93,7 +93,7 @@
         <OutArgument x:TypeArguments="ss:SecureString">[Jira_API_Token]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"eczCDJKsuvh6pxUJ2pc98822").SecurePassword]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"i2U6mWsGdodwaiAJEcTe3B76").SecurePassword]</InArgument>
       </Assign.Value>
     </Assign>
     <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[Jira_API_Token]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="452,1110" sap2010:WorkflowViewState.IdRef="JiraScope_1" ServerURL="https://vedantk.atlassian.net/" UserName="vedantkumar05@gmail.com">
