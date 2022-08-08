@@ -93,7 +93,8 @@ pipeline {
           			timeout: 1000000,
           			waitForJobCompletion: false,
 				traceLevel: 'None',
-				jobType: 'unattended'
+				//strategy: Dynamically(jobsCount: 1, machine: 'PRMS_Add_Client_Machnine', user: 'TestUser'), timeout: 3600, waitForJobCompletion: true, traceLoggingLevel: 'None'
+				jobType: 'Unattended'
           			)
 					
 
