@@ -91,9 +91,9 @@ pipeline {
           			resultFilePath: 'output.json',
           			strategy: Robot(' Vedant Kumar '),
           			timeout: 1000000,
-          			waitForJobCompletion: false
-          			
-        	)
+          			waitForJobCompletion: false,
+				traceLevel: 'None'
+          			)
 					
 
 	            }
