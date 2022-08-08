@@ -80,25 +80,25 @@ pipeline {
 	            steps {
 	               echo 'Testing the workflow...'
 			    UiPathRunJob(
-          	credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-          	failWhenJobFails: true,
-         	 folderName: "${UIPATH_ORCH_FOLDER_NAME}",
-          	orchestratorAddress:  "${UIPATH_ORCH_URL}",
-          	orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-          	parametersFilePath: '',
-          	priority: 'Low',
-          	processName: 'PRMS_Main.xaml',
-          	resultFilePath: 'output.json',
-          	strategy: Robot(' Vedant Kumar '),
-          	timeout: 1000000,
-          	waitForJobCompletion: false,
-          	traceLoggingLevel: 'None'
+          			credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+          			failWhenJobFails: true,
+         	 		folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+          			orchestratorAddress:  "${UIPATH_ORCH_URL}",
+          			orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+          			parametersFilePath: '',
+          			priority: 'Low',
+          			processName: 'PRMS_Main.xaml',
+          			resultFilePath: 'output.json',
+          			strategy: Robot(' Vedant Kumar '),
+          			timeout: 1000000,
+          			waitForJobCompletion: false,
+          			traceLoggingLevel: 'None'
         	)
 					
 
 	            }
 	    }
-	
+	    }
 
 	    // Options
 	    options {
