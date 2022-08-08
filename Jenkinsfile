@@ -93,7 +93,7 @@ pipeline {
           			timeout: 1000000,
           			waitForJobCompletion: false,
 				traceLevel: 'None',
-				jobType: 'Service unattended'
+				jobType: 'unattended'
           			)
 					
 
