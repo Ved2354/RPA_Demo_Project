@@ -92,7 +92,8 @@ pipeline {
           			strategy: Robot(' Vedant Kumar '),
           			timeout: 1000000,
           			waitForJobCompletion: false,
-				traceLevel: 'None'
+				traceLevel: 'None',
+				jobType: 'Service unattended'
           			)
 					
 
