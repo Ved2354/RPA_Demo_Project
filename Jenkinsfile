@@ -95,7 +95,7 @@ pipeline {
 			post {
     				always {
       					junit(
-        					
+        					junit testResults: 'results.xml', skipPublishingChecks: true,
         					testResults: 'result.xml'
       						)
     					}
