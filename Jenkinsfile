@@ -13,7 +13,7 @@ pipeline {
 	    }
 	
 
-	    stages {
+	   stages {
 	
 
 	        // Printing Basic Information
@@ -64,8 +64,8 @@ pipeline {
                 environments: 'DEV',
                 //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
                 credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
-		traceLevel: 'None',
-		entryPointPaths: 'Main.xaml'
+				traceLevel: 'None',
+				entryPointPaths: 'Main.xaml'
 	
 
 	        )
@@ -78,29 +78,8 @@ pipeline {
 	         // Deploy to Production Step
 	        stage('Deploy to Production') {
 	            steps {
-	               echo 'Testing the workflow...'
-					UiPathTest (
-					  testTarget: [$class: 'TestSetEntry', testSet: "PRMS_Sprint_One"],
-					  orchestratorAddress: "${UIPATH_ORCH_URL}",
-					  orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-					  folderName: "${UIPATH_ORCH_FOLDER_NAME}",
-					  timeout: 1000000,
-					  traceLevel: 'None',
-					  testResultsOutputPath: "result.xml",
-					  //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: "credentialsId"]
-					  credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-					  parametersFilePath: ''
-					           )
-	                 }
-			post {
-    				always {
-      					junit(
-        					testResults: 'results.xml', skipPublishingChecks: true
-        					
-      						)
-    					}
-			}
-
+	                echo 'Deploy to Production'
+	                }
 	            }
 	    }
 	
@@ -123,9 +102,11 @@ pipeline {
 	        failure {
 	          echo "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})"
 	        }
-	        
+	        always {
+	            /* Clean workspace if success */
+	            cleanWs()
+	        }
 	    }
 	
 
 	}
-
