@@ -92,47 +92,8 @@ pipeline {
 	            }
 			}
 				
-	         // Building Package
-	        stage('Build Process') {
-				when {
-					expression {
-						currentBuild.result == null || currentBuild.result == 'SUCCESS'
-						}
-				}
-				steps {
-					echo "Building package with ${WORKSPACE}"
-					UiPathPack (
-						  outputPath: "Output\\${env.BUILD_NUMBER}",
-						  projectJsonPath: "project.json",
-						  version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
-						  useOrchestrator: false,
-						  traceLevel: 'None'
-						)
-					}
-	        }			
-			
-	         // Deploy to Production Step
-	        stage('Deploy Process') {
-				when {
-					expression {
-						currentBuild.result == null || currentBuild.result == 'SUCCESS' 
-						}
-				}
-				steps {
-	                echo 'Deploying process to orchestrator...'
-	                UiPathDeploy (
-	                packagePath: "Output\\${env.BUILD_NUMBER}",
-	                orchestratorAddress: "${UIPATH_ORCH_URL}",
-	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
-	                environments: 'INT',
-	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
-	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-					traceLevel: 'None',
-					entryPointPaths: 'Main.xaml'
-					)
-				}   
-			}	
+	       
+	         	
 		
 	    }
 	
