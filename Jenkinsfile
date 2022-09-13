@@ -44,16 +44,11 @@ pipeline {
         )
 	            }
 	        }
-	         // Test Stages
-	        stage('Test') {
-	            steps {
-	                echo 'Testing..the workflow...'
-	            }
-	        }
+	         
 	
 
 	         // Deploy Stages
-	        stage('Deploy to UAT') {
+	        stage('Deploy to Orchestrator') {
 	            steps {
 	                echo "Deploying ${BRANCH_NAME} to UAT "
                 UiPathDeploy (
@@ -74,7 +69,7 @@ pipeline {
 	
 
 	// Test Stages
-	        stage('Perform Tests') {
+	        stage('Execute Worflow') {
 	            steps {
 	               echo 'Testing the workflow...'
 					UiPathTest (
