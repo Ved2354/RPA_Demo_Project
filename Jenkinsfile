@@ -29,7 +29,7 @@ pipeline {
 
 	            }
 	        }
-	
+
 	        stage('Build') {
 	            steps {
 	                echo "Building..with ${WORKSPACE}"
