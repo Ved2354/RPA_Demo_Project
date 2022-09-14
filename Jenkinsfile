@@ -30,8 +30,6 @@ pipeline {
 	            }
 	        }
 	
-
-	         // Build Stages
 	        stage('Build') {
 	            steps {
 	                echo "Building..with ${WORKSPACE}"
