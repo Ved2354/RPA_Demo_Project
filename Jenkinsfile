@@ -3,7 +3,7 @@ pipeline {
 
     	        // Environment Variables
 	        environment {
-	        MAJOR = '9'
+	        MAJOR = '8'
 	        MINOR = '0'
 	        //Orchestrator Services
 	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
