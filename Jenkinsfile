@@ -13,7 +13,7 @@ pipeline {
 	    }
 	
 
-	   stages {
+	    stages {
 	
 
 	        // Printing Basic Information
@@ -23,51 +23,53 @@ pipeline {
 	                echo "Jenkins URL ${env.JENKINS_URL}"
 	                echo "Jenkins JOB Number ${env.BUILD_NUMBER}"
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
-	                echo "GitHub BranhName ${env.BRANCH_NAME}"
+	                echo "GitHub BranchName ${env.BRANCH_NAME}"
 	                checkout scm
 	
 
 	            }
 	        }
+	
 
-	        stage('Build') {
+	         // Building Tests
+	        stage('Build Tests') {
 	            steps {
-	                echo "Building..with ${WORKSPACE}"
+	                echo "Building package with ${WORKSPACE}"
 	                UiPathPack (
-                      outputPath: "Output\\${env.BUILD_NUMBER}",
-                      projectJsonPath: "project.json",
-                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
-                      useOrchestrator: false,
-					  traceLevel: 'None'
-        )
+	                      outputPath: "Output\\Tests\${env.BUILD_NUMBER}",
+						  outputType: 'Tests',
+	                      projectJsonPath: "project.json",
+	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
+	                      useOrchestrator: false,
+						  traceLevel: 'None'
+						)
 	            }
 	        }
-	         
-	
-
+			
 	         // Deploy Stages
-	        stage('Deploy to Orchestrator') {
+	        stage('Deploy Tests') {
 	            steps {
-	                echo "Deploying ${BRANCH_NAME} to UAT "
-                UiPathDeploy (
-                packagePath: "Output\\${env.BUILD_NUMBER}",
-                orchestratorAddress: "${UIPATH_ORCH_URL}",
-                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
-                environments: 'DEV',
-                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
-                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
-				traceLevel: 'None',
-				entryPointPaths: 'Main.xaml'
+	                echo "Deploying ${BRANCH_NAME} to orchestrator"
+	                UiPathDeploy (
+	                packagePath: "Output\\Tests\${env.BUILD_NUMBER}",
+	                orchestratorAddress: "${UIPATH_ORCH_URL}",
+	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+	                environments: 'INT',
+	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
+	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+					traceLevel: 'None',
+					entryPointPaths: 'Main.xaml'
 	
 
-	        )
+					)
 	            }
-	        }
-	
-
-	// Test Stages
-	        stage('Execute Worflow') {
+			
+			}
+			
+			
+	         // Test Stages
+	        stage('Perform Tests') {
 	            steps {
 	               echo 'Testing the workflow...'
 					UiPathTest (
@@ -85,8 +87,47 @@ pipeline {
 	            }
 			}
 				
-	       
-	         	
+	         // Building Package
+	        stage('Build Process') {
+				when {
+					expression {
+						currentBuild.result == null || currentBuild.result == 'SUCCESS'
+						}
+				}
+				steps {
+					echo "Building package with ${WORKSPACE}"
+					UiPathPack (
+						  outputPath: "Output\\${env.BUILD_NUMBER}",
+						  projectJsonPath: "project.json",
+						  version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
+						  useOrchestrator: false,
+						  traceLevel: 'None'
+						)
+					}
+	        }			
+			
+	         // Deploy to Production Step
+	        stage('Deploy Process') {
+				when {
+					expression {
+						currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+						}
+				}
+				steps {
+	                echo 'Deploying process to orchestrator...'
+	                UiPathDeploy (
+	                packagePath: "Output\\${env.BUILD_NUMBER}",
+	                orchestratorAddress: "${UIPATH_ORCH_URL}",
+	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+	                environments: 'INT',
+	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
+	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+					traceLevel: 'None',
+					entryPointPaths: 'Main.xaml'
+					)
+				}   
+			}	
 		
 	    }
 	
@@ -109,7 +150,10 @@ pipeline {
 	        failure {
 	          echo "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})"
 	        }
-	        
+	        always {
+	            /* Clean workspace if success */
+	            cleanWs()
+	        }
 	    }
 	
 	}
