@@ -3,8 +3,8 @@ pipeline {
 
     	        // Environment Variables
 	        environment {
-	        MAJOR = '9'
-	        MINOR = '0'
+	        MAJOR = '1'
+	        MINOR = '5'
 	        //Orchestrator Services
 	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
         	UIPATH_ORCH_LOGICAL_NAME = "suntechnology"
